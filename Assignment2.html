@@ -1,0 +1,282 @@
+<script>
+//     const arr = [1, 2, 3]
+//     console.log(arr.length)
+
+
+
+//     function repeat(n, action) {
+//   for (let i = 0; i < n; i++) {
+//     action(i);
+//   }
+// }
+// repeat(3, console.log);
+// // → 0
+// // → 1
+// // → 2  
+
+// ["A", "B"].forEach(l => console.log(l));
+
+console.log("myEach");
+
+// myEach!!!
+
+
+const arr10 = [1,2,3]
+function myEach(arr1, act1){    
+    for (let i = 0; i < arr1.length; i++) {
+        act1(arr1[i]);
+    }
+}
+arr100 = myEach(arr10, console.log);  
+console.log(arr10);
+console.log(arr100);
+
+
+
+
+
+console.log("myMap");
+function kek(n){
+    
+    n=n+2;
+    console.log(n);
+    return n;
+}
+// myMap!!!
+const arr20 = [4,5,6]
+function myMap(arr2, act2) {
+  let passed = [];
+  for (let i = 0; i < arr2.length; i++) {
+    passed.push(act2(arr2[i]));
+  }
+  return passed;
+}
+arr200 = myMap(arr20, kek); 
+console.log(arr20);
+console.log(arr200);
+
+
+
+console.log("myFilter");
+
+function test1(n){
+    return (n>7);
+}
+// myFilter
+const arr30 = [7,8,9]
+function myFilter(arr3, test) {
+  let passed = [];
+  for (let i = 0; i < arr3.length; i++) {
+    if (test(arr3[i])) {
+        passed.push(arr3[i]);        
+    }    
+  }
+  return passed;
+}
+//console.log(test1(arr30[7]));
+
+arr300 = myFilter(arr30, test1); 
+console.log(arr30); 
+console.log(arr300); 
+
+
+
+
+
+console.log("mySome");
+
+function test2(n){
+    return n % 2 === 0;
+}
+// mySome
+const arr40 = [10,11,12]
+function mySome(arr4, test) {
+  for (let i = 0; i < arr4.length; i++) {
+    if (test(arr4[i])) {
+        return true;      
+    }    
+  }
+  return false;
+}
+arr400 = mySome(arr40, test2); 
+console.log(arr40); 
+console.log(arr400); 
+
+
+
+
+
+
+console.log("myEvery");
+
+function test3(n){
+    return n < 16;
+}
+// myEvery
+const arr50 = [13,14,15]
+function myEvery(arr5, test) {
+    let k = 0;
+  for (let i = 0; i < arr5.length; i++) {
+      
+    if (test(arr5[i])) {
+        k=k+1;     
+    }    
+  }
+  return (k==arr5.length);
+}
+arr500 = myEvery(arr50, test3); 
+console.log(arr50); 
+console.log(arr500); 
+
+
+
+
+
+console.log("myReduce");
+
+function act3(a,b){
+    return a+b;
+}
+// myReduce
+const arr60 = [16,17,18]
+function myReduce(arr6, action, iter=0) {
+    let current = iter;
+    for (let i = 0; i < arr6.length; i++) {
+        current = action(current, arr6[i]);
+        
+    }
+    return current;
+}
+arr600 = myReduce(arr60, act3,5); 
+console.log(arr60); 
+console.log(arr600); 
+
+
+
+
+
+console.log("myRange and mySum");
+
+// myRange
+function myRange(start, end, step = 1) {
+    let passed = [];
+    if (step > 0) {
+        for (let i = start; i <= end; i=i+step) {
+            passed.push(i);          
+        }
+    } else {
+        for (let i = start; i >= end; i=i+step) {
+            passed.push(i);          
+        }
+    }
+  return passed;
+}
+console.log(myRange(1,10)); 
+console.log(myRange(5,2,-1)); 
+console.log(myRange(1,10,2)); 
+
+// mySum
+function mySum(arr7) {
+    let s=0;
+    for (let i = 0; i < arr7.length; i++) {
+        s=s+arr7[i];        
+    }
+    return s;
+}
+console.log(mySum(myRange(1, 10)));
+
+
+
+
+console.log("myReverseArray and myReverseArrayInPlace");
+function myReverseArray(arr){
+    let passed = [];
+    for (let i = arr.length-1; i >=0; i=i-1) {
+        passed.push(arr[i]);          
+    }
+    return passed;
+}
+
+function myReverseArrayInPlace(arr){
+    for (let i = 0; i < arr.length /2; i++) {
+        let k = arr[i];
+        arr[i] = arr[arr.length-1-i];
+        arr[arr.length-1-i] = k;
+    }
+}
+console.log(myReverseArray(["A", "B", "C"]));
+let arrayValue = [1, 2, 3, 4, 5, 6];
+myReverseArrayInPlace(arrayValue);
+console.log(arrayValue);
+
+
+
+
+
+console.log("myList");
+//MyList
+function arrayToList(arr){
+    let list = {value: arr[arr.length-1], rest: null};
+    for (let i = arr.length-2; i >=0; i=i-1) {
+        list = {value: arr[i], rest: list};
+    }
+    return list;
+}
+console.log(arrayToList([5,10, 20]));
+
+function listToArray(list){
+    let passed = [];
+    while (list != null) {
+        passed.push(list['value']);
+        list = list['rest'];          
+    }
+    return passed;
+}
+console.log(listToArray(arrayToList([10, 5, 7, 20, 30])));
+
+function prepend(elem, list){
+    list = {value: elem, rest: list};
+    return list;
+}
+console.log(prepend(10, prepend(20, null)));
+
+function nth(list, n){
+    let i = 0;
+    while ((i < n) && (list != null )) {
+        list = list['rest']; 
+        i++;         
+    }
+    if (list == null) return undefined;
+    else return list['value'];
+}
+console.log(nth(arrayToList([10, 20, 30]), 1));
+
+
+
+console.log("deepEqual");
+
+function deepEqual(a, b){
+    if ((typeof x == "object" && x != null) && (typeof y == "object" && y != null)) {
+        if (Object.keys(x).length != Object.keys(y).length){
+            return false;
+        }         
+
+        for (var prop in x) {
+            if (y.hasOwnProperty(prop))
+            {     
+                if (! deepEqual(x[prop], y[prop]))
+                return false;
+            } else{
+                return false;
+            }                
+        }
+        return true;
+    } else {
+        return ( a === b ); 
+    }
+}  
+let obj = {here: {is: "an"}, object: 2};
+let obj1 = {object: 2};
+//console.log(Object.keys(obj));
+console.log(deepEqual(5, 2));
+</script>
